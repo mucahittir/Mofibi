@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "Fiyat";
+}
+
+<div class="contact1">
+    <div class="container-contact1 " style="padding-top:90px;">
+
+
+
+        @if (ViewBag.Hata != null)
+        {<span class="contact1-form-title" style="text-align:center;">
+                @ViewBag.Hata
+            </span>
+        }
+        else
+        {
+            <span class="contact1-form-title" style="text-align:center;">
+                Tahmini Telefon Fiyatı
+            </span>
+            <span class="contact1-form-title" style="text-align:center;">
+                @ViewBag.Fiyat
+            </span>
+        }
+        <br />
+        <div class="container-contact1-form-btn" style="text-align:center; width:100%;">
+            <i id="like" class="fa fa-thumbs-up fa-3x" style="padding-right:20px;"></i>
+            <a href="/" class="contact1-form-btn">
+                <span>
+                    Anasayfaya Geri Dön
+                    <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                </span>
+            </a>
+        </div>
+    </div>
+
+</div>

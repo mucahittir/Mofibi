@@ -1,0 +1,92 @@
+﻿
+@{
+    ViewBag.Title = "BasitFiyat";
+}
+
+<div class="contact1">
+
+    <div class="container-contact1">
+        <header class="header customcss">
+            <nav class="navbar navbar-expand-lg contact1-navbar py-3">
+                <div class="container">
+                    <a href="#" class="navbar-brand text-uppercase font-weight-bold">MOFIBI</a>
+                    <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right"><i class="fa fa-bars"></i></button>
+
+                    <div id="navbarSupportedContent" class="collapse navbar-collapse">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">@Html.ActionLink("Detaylı", "Index", null, new { @class = "nav-link text-uppercase font-weight-bold" })</li>
+                            <li class="nav-item">@Html.ActionLink("Basit", "BasitIndex", null, new { @class = "nav-link text-uppercase font-weight-bold" })</li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <div class="contact1-pic js-tilt" data-tilt>
+            <img src="~/Content/images/img-01.png" alt="IMG">
+        </div>
+
+        @using (Html.BeginForm("BasitFiyat", "Home", FormMethod.Post))
+        {
+            <span class="contact1-form-title">
+                Detaylı Analiz
+            </span>
+
+            <div class="wrap-input1 validate-input">
+                @Html.DropDownList("marka", ((List<string>)ViewBag.Marka).Select(m => new SelectListItem { Text = m, Value = m }), "Marka Seçiniz", new { @class = "input1" })
+                <span class="shadow-input1"></span>
+            </div>
+
+            <div class="wrap-input1 validate-input">
+                @Html.DropDownList("model", ((List<string>)ViewBag.Model).Select(m => new SelectListItem { Text = m, Value = m }), "Model Seçiniz", new { @class = "input1" })
+                <span class="shadow-input1"></span>
+            </div>
+
+            <div class="wrap-input1 validate-input">
+
+                @Html.DropDownList("dahiliHaf", ((List<float>)ViewBag.DahiliHafiza).Select(m => new SelectListItem { Text = m.ToString(), Value = m.ToString() }), "Dahili Depolama Seçiniz (GB)", new { @class = "input1" })
+                <span class="shadow-input1"></span>
+            </div>
+
+            <div class="wrap-input1 validate-input">
+                @Html.DropDownList("garanti", ((List<string>)ViewBag.GarantiDurumu).Select(m => new SelectListItem { Text = m, Value = m }), "Garanti Tipi Seçiniz", new { @class = "input1" })
+                <span class="shadow-input1"></span>
+            </div>
+
+            <div class="wrap-input1 validate-input">
+                @Html.DropDownList("renk", ((List<string>)ViewBag.Renk).Select(m => new SelectListItem { Text = m, Value = m }), "Renk Seçiniz", new { @class = "input1" })
+                <span class="shadow-input1"></span>
+            </div>
+
+            <div class="wrap-input1 validate-input">
+                @Html.DropDownList("mlModel", new List<SelectListItem>
+                {
+                   new SelectListItem{ Text="K en yakın komşu algoritması", Value = "knn" },
+                   new SelectListItem{ Text="Karar ağacı", Value = "dtree" },
+                   new SelectListItem{ Text="Doğrusal regresyon,", Value = "lr" },
+                   new SelectListItem{ Text="Lasso regresyon,", Value = "lasso" }
+                }, "Makine Öğrenmesi Algoritması Seçiniz", new { @class = "input1" })
+                <span class="shadow-input1"></span>
+            </div>
+
+            <div class="container-contact1-form-btn">
+                <button class="contact1-form-btn">
+                    <span>
+                        Fiyat Hesapla
+                        <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                    </span>
+                </button>
+            </div>
+        }
+
+        @if (ViewBag.Message != null)
+        {
+            <script type="text/javascript">
+
+            window.onload = function () {
+                alert("@ViewBag.Message");
+            };
+            </script>
+        }
+
+    </div>
+</div>
